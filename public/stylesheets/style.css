@@ -1,0 +1,38 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+
+
+button#go[disabled] i {
+  color: red;
+}
+
+button#go i {
+  color: green;
+}
+
+
+div[disabled]
+{
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+#challengeGrid {
+  width: 500px; display: grid; grid-template-columns: repeat(3, 1fr);
+}
+
+
+.problem  input {
+  background-color: transparent;
+    color: black;
+    width: 75px;
+    border: none;
+    border-top: 1px solid black;
+}

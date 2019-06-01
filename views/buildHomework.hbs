@@ -1,0 +1,429 @@
+ <section id="events" class="grid-container">
+    <main class="top-left">
+        <h2>Fir.ST Camps</h2>
+        <h3>May 2019 - Time Travelling Challenge Camp</h3>
+        <p>Welcom to the new booking system for Fir.ST Camps.</p>
+        <p>Please complete each section of the form. A <span class="err-desc">*</span> will appear for each field that
+            is
+            required.</p>
+        <div class="col col-md-12 col-lg-6 offset-lg-3">
+            <form action="/bookings/postBooking" method="post" name="send_cms_form" id="send_cms_form">
+                <input type="hidden" id="trip" name="trip" value="FCMay2019">
+                <section class="primaryDetails">
+                    <div class="form-group">
+                        <label for="parentName">Parents Name</label>
+                        <input type="text" class="form-control" name="parentName" placeholder="Parents Name" required
+                            data-error="Parent Name is required">
+                    </div>
+                    <div class="form-group">
+                        <label for="cell_number">Primary Contact Number</label>
+                        <input type="text" class="form-control" name="cell_number" placeholder="Primary Contact Number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Primary Contact Email</label>
+                        <input type="text" class="form-control" name="email" placeholder="Primary Contact Email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="relationship1" required>Relationship</label>
+                        <label class="checkbox-inline">
+                            <input id="relationship1" name="relationship1" type="radio" value="Mother" class="session" required>Mother
+                        </label>
+                        <label class="checkbox-inline">
+                            <input id="relationship1" name="relationship1" type="radio" value="Father" class="session">Father
+                        </label>
+                
+                        <label class="checkbox-inline">
+                            <input id="relationship1" name="relationship1" type="radio" value="Guardian" class="session">Guardian
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <div id="primary_address_postcode_lookup"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="primary_address_line1">First Address Line</label>
+                        <input id="primary_address_line1" name="primary_address_line1" type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="primary_address_line2">Second Address Line</label>
+                        <input id="primary_address_line2" name="primary_address_line2" type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="primary_address_line3">Third Address Line</label>
+                        <input id="primary_address_line3" name="primary_address_line3" type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="primary_address_town">Town</label>
+                        <input id="primary_address_town" name="primary_address_town" type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="primary_address_county">County</label>
+                        <input id="primary_address_county" name="primary_address_county" type="text" required class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="primary_address_postcode">Postcode</label>
+                        <input id="primary_address_postcode" name="primary_address_postcode" type="text" required class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <button class="reg-next-button btn btn-primary btn-large btn-block">Next</button>
+                    </div>
+                </section>
+                
+                <!-- <section class="secondaryDetails hiddenPanel">
+                                                    <div class="form-group">
+                                                        <label for="parent2Name">Parent 2's Name</label>
+                                                        <input type="text" class="form-control" name="parent2Name" placeholder="Parent 2's Name"
+                                                            required>
+                                                    </div>
+                                
+                                
+                                                    <div class="form-group">
+                                                        <label for="cell_number2">Second Contact Number</label>
+                                                        <input type="text" class="form-control" name="cell_number2" placeholder="Second Contact Number"
+                                                            required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="email2">Second Contact Email</label>
+                                                        <input type="text" class="form-control" name="email2" placeholder="Second Contact Email"
+                                                            required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="relationship2">Relationship</label>
+                                                        <label class="checkbox-inline">
+                                                            <input id="relationship2" name="relationship2" type="radio" value="Mother"
+                                                                class="session">Mother
+                                                        </label>
+                                                        <label class="checkbox-inline">
+                                                            <input id="relationship2" name="relationship2" type="radio" value="Father"
+                                                                class="session">Father
+                                                        </label>
+                                
+                                                        <label class="checkbox-inline">
+                                                            <input id="relationship2" name="relationship2" type="radio" value="Guardian"
+                                                                class="session">Guardian
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="email">Adress (Optional)</label>
+                                                        <input type="text" class="form-control" name="adress2" placeholder="Secondary Adress">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <button class="reg-next-button btn btn-primary btn-large btn-block">Next</button>
+                                                    </div>
+                                                </section>
+                                -->                <section class="childrensDetails hiddenPanel">
+                    <h2>Childs Details</h2>
+                    <div class="form-group">
+                        <label for="childsName">Childs Name</label>
+                        <input type="text" class="form-control" name="childsName" placeholder="Childs Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dob">Date of Birth</label>
+                        <div id="dob" class="input-group date" data-date-format="dd/mm/yyyy">
+                            <input class="form-control" type="text" id="theMonth" readonly />
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="gender">Gender</label>
+                        <label class="checkbox-inline">
+                            <input id="gender" name="gender" type="radio" value="male" class="session">Boy
+                        </label>
+                        <label class="checkbox-inline">
+                            <input id="gender" name="gender" type="radio" value="female" class="session">Girl
+                        </label>
+                
+                        <label class="checkbox-inline">
+                            <input id="gender" name="gender" type="radio" value="unknown" class="session">Prefer not to
+                            say
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="specialConsideration">Special Consideration</label>
+                        <textarea id="specialConsideration" name="specialConsideration" class="form-control" cols="30" rows="10"
+                            placeholder="Special Consideration" maxLength="500"></textarea>
+                        <span id="chars">100</span> characters remaining</span>
+                    </div>
+                    <div class="form-group">
+                        <button class="reg-previous-button btn btn-primary btn-large btn-block">Previous</button>
+                        <button class="reg-next-button btn btn-primary btn-large btn-block">Next</button>
+                    </div>
+                </section>                <section class="bookingDetails hiddenPanel">
+                    <h2>Booking</h2>
+                    <p>Please select the activity days you require. Any Early or Late sessions will automatically select
+                        the associated Acitivy Day.</p>
+                    <p></p>
+                    <h3>Rates</h3>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Session</th>
+                                    <th>Rate</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Activity Day</td>
+                                    <td>£25.00</td>
+                                </tr>
+                                <tr>
+                                    <td>Early</td>
+                                    <td>£2.50</td>
+                                </tr>
+                                <tr>
+                                    <td>Late</td>
+                                    <td>£2.50</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="form-group">
+                        <ul class="dates" style="    list-style: none;
+                    display: flex;">
+                            <li class="date">
+                                <span>Tue 28th</span>
+                                <input type="checkbox" name="2019-05-28-Day" id="2019-05-28-Day" class="single">
+                                <label for="2019-05-28-Day">Activity Day</label><br />
+                                <input type="checkbox" name="2019-05-28-Early" id="2019-05-28-Early" class="addon">
+                                <label for="2019-05-28-Early">Early</label>
+                                <input type="checkbox" name="2019-05-28-Late" id="2019-05-28-Late" class="addon">
+                                <label for="2019-05-28-Late">Late</label>
+                
+                            </li>
+                            <li class="date"><span>Wed 29th</span>
+                                <input type="checkbox" name="2019-05-29-Day" id="2019-05-29-Day" class="single">
+                                <label for="2019-05-29-Day">Activity Day</label><br />
+                                <input type="checkbox" name="2019-05-29-Early" id="2019-05-29-Early" class="addon">
+                                <label for="2019-05-29-Early">Early</label>
+                                <input type="checkbox" name="2019-05-29-Late" id="2019-05-29-Late" class="addon">
+                                <label for="2019-05-29-Late">Late</label>
+                            </li>
+                            <li class="date"><span>Thr 30th</span>
+                                <input type="checkbox" name="2019-05-30-Day" id="2019-05-30-Day" class="single">
+                                <label for="2019-05-30-Day">Activity Day</label><br />
+                                <input type="checkbox" name="2019-05-30-Early" id="2019-05-30-Early" class="addon">
+                                <label for="2019-05-30-Early">Early</label>
+                                <input type="checkbox" name="2019-05-30-Late" id="2019-05-30-Late" class="addon">
+                                <label for="2019-05-30-Late">Late</label>
+                            </li>
+                            <li class="date"><span>Fri &nbsp;31st</span>
+                                <input type="checkbox" name="2019-05-31-Day" id="2019-05-31-Day" class="single">
+                                <label for="2019-05-31-Day">Activity Day</label><br />
+                                <input type="checkbox" name="2019-05-31-Early" id="2019-05-31-Early" class="addon">
+                                <label for="2019-05-31-Early">Early</label>
+                                <input type="checkbox" name="2019-05-31-Late" id="2019-05-31-Late" class="addon">
+                                <label for="2019-05-31-Late">Late</label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="form-group">
+                        <button class="reg-previous-button btn btn-primary btn-large btn-block">Previous</button>
+                        <button class="reg-next-button btn btn-primary btn-large btn-block">Next</button>
+                    </div>
+                </section>                <section class="paymentDetails hiddenPanel">
+                    <div class="form-group">
+                        <label for="method">Payment Method</label>
+                        <label class="checkbox-inline">
+                            <input id="method" name="method" type="radio" value="Cash" class="session" required>Cash
+                        </label>
+                        <label class="checkbox-inline">
+                            <input id="method" name="method" type="radio" value="Bank" class="session">Bank
+                        </label>
+                
+                        <label class="checkbox-inline">
+                            <input id="method" name="method" type="radio" value="Card" class="session">Card
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="VoucherProvider">Childcare Voucher Provider (Optional)</label>
+                        <p>If you are paying via childcare vouchers; Please provide the name of your provider and your
+                            account reference.</p>
+                        <input type="text" class="form-control" name="VoucherProvider" placeholder="Short-answer text">
+                    </div>
+                
+                
+                
+                    <div class="form-group">
+                        <button class="reg-previous-button btn btn-primary btn-large btn-block">Previous</button>
+                        <button class="reg-next-button btn btn-primary btn-large btn-block">Next</button>
+                    </div>
+                </section>                <section class="permissionDetails hiddenPanel">
+                    <div class="form-group">
+                        <p>I understand pictures will be taken while on the trip, and my be used for future marketing by
+                            Super Thinkers.</p>
+                        <label class="checkbox-inline">
+                            <input id="pictures" name="pictures" type="radio" value="Allow" class="session">I accept and
+                            will allow photos to be taken and used for marketing.</label>
+                        <label class="checkbox-inline">
+                            <input id="pictures" name="pictures" type="radio" value="Allow Restricted" class="session">I
+                            accept and will allow photos to be taken and used internally on displays.</label>
+                        <label class="checkbox-inline">
+                            <input id="pictures" name="pictures" type="radio" value="Disallow" class="session">I decline
+                            and
+                            ask not to have photo taken.
+                        </label>
+                    </div>
+                
+                    <div class="form-group">
+                        <p>I understand that the details provided will not be passed on to any third party providers.
+                        </p>
+                        <p>I understand that Super Thinkers (and any of its proxies) may contact me for quality
+                            assurance
+                            and further
+                            trips.
+                        </p>
+                        <label class="checkbox-inline">
+                            <input id="gdpr" name="gdpr" type="checkbox" value="GDPR" class="session" required>I accept.
+                        </label>
+                    </div>
+                
+                    <div class="form-group">
+                        <p>I understand that by completing and submitting this form, I am confirming the attendance of
+                            the
+                            child
+                            named above.</p>
+                        <p>I understand that payment for the trip is due by the 19th April 2019.</p>
+                        <p>In the event of non-payment, the booking will be forfeited, any costs incurred to Super
+                            Thinkers
+                            will
+                            be passed onto the Parent named above.</p>
+                        <label class="checkbox-inline">
+                            <input id="terms" name="terms" type="checkbox" value="Confirmation" class="session" required>I
+                            accept.
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <button class="reg-previous-button btn btn-primary btn-large btn-block">Previous</button>
+                        <button type="submit" class="btn btn-primary btn-large btn-block">Book</button>
+                    </div>
+                </section>            </form>
+        </div>
+    </main>
+    <aside class="top-right">
+
+    </aside>
+</section>
+<script src="https://getaddress.io/js/jquery.getAddress-2.0.8.min.js"></script>
+<script>
+
+
+
+    $(document).ready(function () {
+        doDatePicker()
+
+
+        $('#primary_address_postcode_lookup').getAddress({
+            api_key: 'wou71h12QE--rDGW5WlGnw9066',
+            output_fields: {
+                line_1: '#primary_address_line1',
+                line_2: '#primary_address_line2',
+                line_3: '#primary_address_line3',
+                post_town: '#primary_address_town',
+                county: '#primary_address_county',
+                postcode: '#primary_address_postcode'
+            },
+            onLookupSuccess: function (data) {/* Your custom code */ },
+            onLookupError: function () {/* Your custom code */ },
+            onAddressSelected: function (elem, index) {/* Your custom code */ }
+        });
+    });
+
+    function doDatePicker() {
+        $("#dob").datepicker({
+
+            endDate: new Date('2011-5-26'),
+            minDate: new Date('2001-5-26')
+
+
+        }).datepicker('update', new Date('2011-5-26'))
+
+    }
+
+
+    $('form').validate({
+        onclick: false, // <-- add this option
+        errorPlacement: function (error, element) {
+
+            $(element).closest(".form-group").children().first("label").after('<span class="err">*</span>')
+        }
+    });
+
+
+    //clicking the next button hides the current section and shows the next section
+    $('.reg-next-button').click(function (e) {
+
+        e.preventDefault();
+        var form = $(this).closest("form");
+        var validator = form.data("validator");
+        var section = $(this).closest("section");
+        var fields = section.find(":input");
+        $(".err").remove();
+
+        if (section.hasClass("bookingDetails") && section.find("input:checked").length == 0) {
+            console.log("No Bookings")
+        }
+
+        else if (fields.valid()) {
+            console.log("Valid!");
+            // Hide this section...
+            section.toggle();
+            // And show the next section
+            section.next().toggle();
+        }
+    });
+
+    $('.reg-previous-button').click(function (e) {
+        e.preventDefault();
+        var form = $(this).closest("form");
+        var validator = form.data("validator");
+        var section = $(this).closest("section");
+        //var fields = section.find(":input");
+        //if (fields.valid()) {
+        console.log("Valid!");
+        // Hide this section...
+        section.toggle();
+        // And show the next section
+        section.prev().toggle();
+        //}
+    })
+
+    $('.single').change(function (e) {
+        if (this.checked == false) {
+            $(this).parent().children(".addon").prop("checked", false)
+        }
+    })
+
+    $('.addon').change(function (e) {
+        var dayCheck = $(this).parent().children(".single")
+        if (this.checked == true) {
+            dayCheck.prop('checked', true);
+        }
+    })
+</script>
+        <footer id="footer">
+        </footer>
+    </div>
+
+
+</body>
+<script>
+    $().ready(() => {
+        var menu = document.querySelector('ul'),
+            menulink = document.getElementById("menuLink");
+
+        menulink.addEventListener('click', function (e) {
+            menu.classList.toggle('active');
+            e.preventDefault();
+        });
+
+
+        $(".datePicker").datepicker({
+            autoclose: true,
+            todayHighlight: true,
+            showTodayButton: true,
+        }).datepicker('update', new Date())
+    })
+
+</script>

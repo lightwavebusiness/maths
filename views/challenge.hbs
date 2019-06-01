@@ -1,0 +1,86 @@
+<form action="{{action}}" method="post">
+<div id="chellengeDetails">
+    <div class="form-group">
+        <label for="txtName">Name</label>
+        <input type="text" name="challenger" id="challenger" placeholder="Your full name">
+        <button id="go" disabled="disabled"><i class="far fa-frown"></i></button>
+    </div>
+    <div class="form-group">
+        <label id="lblTimer"><time>00:00:00</time></label>
+        <input type="hidden" name="hidTimer" id="hidTimer">
+    </div>
+
+</div>
+<div id="challengeGrid" disabled>
+    {{#each data}}
+        <table class="problem">
+            <tr><td></td><td>{{this.top}}</td></tr>
+            <tr><td>{{{this.operator}}}</td><td>{{this.bottom}}</td></tr>
+            <tr><td colspan="2"><input type="text" name="{{this.id}}" id="{{this.id}}"></td></tr>
+        </table>
+    {{/each}}
+</div>
+
+</form>
+
+<script>
+    var questions = {{{str}}};
+
+        var label = document.getElementById('lblTimer').firstChild,
+            seconds = 0, minutes = 0, hours = 0,
+            t;
+
+
+    (function() {
+
+
+
+
+
+        document.getElementById("challenger").addEventListener("input",  (e) => {
+            if(e.target.value.length)
+                if (/\w+\s+\w+/.test(e.target.value))  {
+                    var go = document.getElementById("go") 
+                    go.disabled = false;
+                    go.firstChild.classList.remove("fa-frown")
+                    go.firstChild.classList.add("fa-smile-wink")
+                }
+        })
+
+        document.getElementById("go").addEventListener("click", (e) => {
+            e.preventDefault();
+            e.target.disabled = true;
+            document.getElementById("challenger").disabled = true;
+            
+            document.getElementById("challengeGrid").removeAttribute("disabled")
+            timer();
+        })
+
+
+
+
+    })();
+
+
+
+
+
+    function add() {
+        seconds++;
+        if (seconds >= 60) {
+            seconds = 0;
+            minutes++;
+            if (minutes >= 60) {
+                minutes = 0;
+                hours++;
+            }
+        }
+        
+        label.textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+
+        timer();
+    }
+    function timer() {
+        t = setTimeout(add, 1000);
+    }
+</script>
