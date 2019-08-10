@@ -71,54 +71,66 @@ doc.end();
 });
 
 router.get('/buildHomework', function(req, res, next){
+    var inFile = req.query.infile
+    var outFile = req.query.outfile
 
-    var data = { 
-        'Student Name': 'Paolo Chaffey',
-    'Date Set': '24/05/2019',
-    'Date Due': '25/05/2019 ',
-    'NoRow1': '1',
-    'HomeworkRow1': 'Test 1',
-    'NoRow2': '2',
-    'HomeworkRow2': 'Test 2',
-    'NoRow3': '3',
-    'HomeworkRow3': 'Test 3',
-    'NoRow4': '4',
-    'HomeworkRow4': '4',
-    'NoRow5': '5',
-    'HomeworkRow5': '5',
-    'NoRow6': '6',
-    'HomeworkRow6': '6',
-    'NoRow7': '7',
-    'HomeworkRow7': '7',
-    'Parent Feedback': 'Hello',
-    'Homework Feedback': 'Goodbye',
-    'undefined_7': '1',
-    'undefined_8': '2',
-    'undefined_9': '3',
-    'undefined_10': '4',
-    'undefined_11': '5',
-    'undefined_12': '6',
-    'undefined_13': '7',
-    'readingDate': '24/5',
-    'readingDate2': '25/5',
-    'readingDate3': '26/5',
-    'readingDate4': '27/5',
-    'readingDate5': '28/5',
-    'readingDate6': '29/5',
-    'readingDate7': '30/5',
-    'readingDate8': '31/5',
-    'readingDate9': '01/06' }
+    if(inFile===undefined||outFile===undefined) {
+        res.render("error", { message : "Parameter Error"})
+
+    } else {
+//console.log(req.body)
+
+    var data = req.body
+    
+    // { 
+    //     'Student Name': 'Alejandro Chaffey',
+    // 'Date Set': '10/08/2019',
+    // 'Date Due': '16/08/2019 ',
+    // 'NoRow1': '1',
+    // 'HomeworkRow1': 'Test 1',
+    // 'NoRow2': '2',
+    // 'HomeworkRow2': 'Test 2',
+    // 'NoRow3': '3',
+    // 'HomeworkRow3': 'Test 3',
+    // 'NoRow4': '4',
+    // 'HomeworkRow4': '4',
+    // 'NoRow5': '5',
+    // 'HomeworkRow5': '5',
+    // 'NoRow6': '6',
+    // 'HomeworkRow6': '6',
+    // 'NoRow7': '7',
+    // 'HomeworkRow7': '7',
+    // 'Parent Feedback': 'Hello',
+    // 'Homework Feedback': 'Goodbye',
+    // 'undefined_7': '',
+    // 'undefined_8': '',
+    // 'undefined_9': '',
+    // 'undefined_10': '',
+    // 'undefined_11': '',
+    // 'undefined_12': '',
+    // 'undefined_13': '*',
+    // 'readingDate': '24/5',
+    // 'readingDate2': '25/5',
+    // 'readingDate3': '26/5',
+    // 'readingDate4': '27/5',
+    // 'readingDate5': '28/5',
+    // 'readingDate6': '29/5',
+    // 'readingDate7': '30/5',
+    // 'readingDate8': '31/5',
+    // 'readingDate9': '01/06' }
   
-    var sourcePDF = "pdfs/homework.pdf";
-    var destinationPDF =  "pdfs/test_complete.pdf";
+    var sourcePDF = `templates/${inFile}`;
+    var destinationPDF =  `pdfs/${outFile}`; //test_complete.pdf";
 
      
-    // pdfFiller.fillForm( sourcePDF, destinationPDF, data, function(err) {
-    //     if (err) throw err;
-    //     console.log("In callback (we're done).");
-    // });
+    pdfFiller.fillFormWithFlatten( sourcePDF, destinationPDF, data, function(err) {
+        if (err) throw err;
+        console.log("In callback (we're done)."); 
+    });
 
     res.render('buildHomework', {title : 'Homework Builder', schema : "We do have one"});
+
+}
 });
 
 router.get('/fill', function(req, res, next) {

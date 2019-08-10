@@ -3,7 +3,7 @@
     <div class="form-group">
         <label for="txtName">Name</label>
         <input type="text" name="challenger" id="challenger" placeholder="Your full name">
-        <button id="go" disabled="disabled"><i class="far fa-frown"></i></button>
+        <button id="go" disabled="disabled"><i id="go-text" class="far fa-frown">Go</i></button>
     </div>
     <div class="form-group">
         <label id="lblTimer"><time>00:00:00</time></label>
@@ -35,7 +35,7 @@
 
 
 
-
+        var GoText = document.getElementById("go-text");
 
         document.getElementById("challenger").addEventListener("input",  (e) => {
             if(e.target.value.length)
