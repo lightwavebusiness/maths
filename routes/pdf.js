@@ -3,7 +3,7 @@ var router = express.Router();
 var PDFDocument = require('pdfkit');
 var blobStream = require('blob-stream');
 var pdfFiller   = require('pdffiller');
-
+var fs = require('fs');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -74,7 +74,11 @@ router.get('/buildHomework', function(req, res, next){
     var inFile = req.query.infile
     var outFile = req.query.outfile
 
-    if(inFile===undefined||outFile===undefined) {
+    if(
+        inFile===undefined ||
+        outFile===undefined ||
+        req.body===undefined || 
+        req.body===null) {
         res.render("error", { message : "Parameter Error"})
 
     } else {
@@ -128,10 +132,25 @@ router.get('/buildHomework', function(req, res, next){
         console.log("In callback (we're done)."); 
     });
 
-    res.render('buildHomework', {title : 'Homework Builder', schema : "We do have one"});
+    //res.render('buildHomework', {title : 'Homework Builder', schema : "We do have one"});
 
 }
 });
+
+router.get("/export/:file", (req, res, next) => {
+    try {
+        var path = `./pdfs/${req.params.file}.pdf`;
+        var file = fs.createReadStream(path);
+        var stat = fs.statSync(path);
+        res.setHeader('Content-Length', stat.size);
+        res.setHeader('Content-Type', 'application/pdf');
+        res.setHeader('Content-Disposition', `attachment; filename=${req.params.file}.pdf`);
+        file.pipe(res);
+    } catch (err) {
+        res.render("error", err);
+    }
+})
+
 
 router.get('/fill', function(req, res, next) {
     var sourcePDF = "pdfs/homework.pdf";
