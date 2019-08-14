@@ -137,6 +137,8 @@ router.get('/buildHomework', function(req, res, next){
 }
 });
 
+
+//Route forces the pdf to be saved 
 router.get("/export/:file", (req, res, next) => {
     try {
         var path = `./pdfs/${req.params.file}.pdf`;
@@ -148,6 +150,18 @@ router.get("/export/:file", (req, res, next) => {
         file.pipe(res);
     } catch (err) {
         res.render("error", err);
+    }
+})
+
+//Route will show output  within browser window. 
+router.get("/read/:file", (req, res, next) => {
+    try {
+        var path = `./pdfs/${req.params.file}.pdf`;
+        var data =fs.readFileSync(path);
+        res.contentType("application/pdf");
+        res.send(data);
+    } catch (err) {
+        res.render("error", err)
     }
 })
 
