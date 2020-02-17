@@ -81,7 +81,8 @@ router.get('/buildHomework', function(req, res, next){
         req.body===null) {
         res.render("error", { message : "Parameter Error"})
 
-    } else {
+    } 
+
 //console.log(req.body)
 
     var data = req.body
@@ -134,7 +135,7 @@ router.get('/buildHomework', function(req, res, next){
 
     //res.render('buildHomework', {title : 'Homework Builder', schema : "We do have one"});
 
-}
+
 });
 
 
