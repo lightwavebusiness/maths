@@ -12,6 +12,22 @@ router.get('/', function(req, res, next) {
 var stream = doc.pipe(blobStream());
 var lorem = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid aperiam accusantium quaerat possimus laboriosam quas consectetur rem. Quae, unde quibusdam. Nemo enim nisi odio consequatur! Officia magnam odio eligendi asperiores? Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid aperiam accusantium quaerat possimus laboriosam quas consectetur rem. Quae, unde quibusdam. Nemo enim nisi odio consequatur! Officia magnam odio eligendi asperiores?Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid aperiam accusantium quaerat possimus laboriosam quas consectetur rem. Quae, unde quibusdam. Nemo enim nisi odio consequatur! Officia magnam odio eligendi asperiores?Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid aperiam accusantium quaerat possimus laboriosam quas consectetur rem. Quae, unde quibusdam. Nemo enim nisi odio consequatur! Officia magnam odio eligendi asperiores?Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid aperiam accusantium quaerat possimus laboriosam quas consectetur rem. Quae, unde quibusdam. Nemo enim nisi odio consequatur! Officia magnam odio eligendi asperiores?Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid aperiam accusantium quaerat possimus laboriosam quas consectetur rem. Quae, unde quibusdam. Nemo enim nisi odio consequatur! Officia magnam odio eligendi asperiores?Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid aperiam accusantium quaerat possimus laboriosam quas consectetur rem. Quae, unde quibusdam. Nemo enim nisi odio consequatur! Officia magnam odio eligendi asperiores?Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid aperiam accusantium quaerat possimus laboriosam quas consectetur rem. Quae, unde quibusdam. Nemo enim nisi odio consequatur! Officia magnam odio eligendi asperiores?Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid aperiam accusantium quaerat possimus laboriosam quas consectetur rem. Quae, unde quibusdam. Nemo enim nisi odio consequatur! Officia magnam odio eligendi asperiores?Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid aperiam accusantium quaerat possimus laboriosam quas consectetur rem. Quae, unde quibusdam. Nemo enim nisi odio consequatur! Officia magnam odio eligendi asperiores?Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid aperiam accusantium quaerat possimus laboriosam quas consectetur rem. Quae, unde quibusdam. Nemo enim nisi odio consequatur! Officia magnam odio eligendi asperiores?";
 
+
+doc
+  .scale(1)
+  .translate(30, 0)
+  .path('M222.77 104.2C247.29 102.33 263.65 104.19 271.84 109.77C325.21 146.14 395.95 143.89 446.9 104.2C446.9 104.2 446.9 104.2 446.9 104.2C490.23 125.53 517.31 138.86 528.15 144.19C558.96 159.36 595 136.93 595 102.59C595 88.91 595 54.71 595 0L0 0C65.48 75.8 139.74 110.53 222.77 104.2Z')
+  .fill('black', 'even-odd')
+  .restore();
+
+  doc
+  .scale(1)
+  .translate(5, -5)
+  .path('M222.77 104.2C247.29 102.33 263.65 104.19 271.84 109.77C325.21 146.14 395.95 143.89 446.9 104.2C446.9 104.2 446.9 104.2 446.9 104.2C490.23 125.53 517.31 138.86 528.15 144.19C558.96 159.36 595 136.93 595 102.59C595 88.91 595 54.71 595 0L0 0C65.48 75.8 139.74 110.53 222.77 104.2Z')
+  .fill('yellow', 'even-odd')
+  .restore();
+
+
 // draw some text
 doc.fontSize(25).text('Here is some vector graphics...', 100, 80);
 
@@ -27,10 +43,10 @@ doc.circle(280, 200, 50).fill('#6600FF');
 
 // an SVG path
 doc
-  .scale(0.6)
-  .translate(470, 130)
-  .path('M 250,75 L 323,301 131,161 369,161 177,301 z')
-  .fill('red', 'even-odd')
+  .scale(1)
+  .translate(0, 0)
+  .path('M222.77 104.2C247.29 102.33 263.65 104.19 271.84 109.77C325.21 146.14 395.95 143.89 446.9 104.2C446.9 104.2 446.9 104.2 446.9 104.2C490.23 125.53 517.31 138.86 528.15 144.19C558.96 159.36 595 136.93 595 102.59C595 88.91 595 54.71 595 0L0 0C65.48 75.8 139.74 110.53 222.77 104.2Z')
+  .fill('yellow', 'even-odd')
   .restore();
 
 // and some justified text wrapped into columns
