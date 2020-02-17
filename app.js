@@ -9,11 +9,25 @@ var usersRouter = require('./routes/users');
 var pdfRouter = require('./routes/pdf');
 var challengRouter = require("./routes/challenges")
 
+var hbs = require("express-hbs");
+
 var app = express();
 
+app.engine(
+  "hbs",
+  hbs.express4({
+    partialsDir: __dirname + "/views/partials",
+    layoutsDir: __dirname + "/views/layouts",
+    defaultLayout: __dirname + "/views/layouts/layout"
+  })
+);
+app.set("view engine", "hbs");
+app.set("views", __dirname + "/views/pages");
+
+
 // view engine setup
-app.set('views', path.join(__dirname, 'views/pages'));
-app.set('view engine', 'hbs');
+//app.set('views', path.join(__dirname, 'views/pages'));
+//app.set('view engine', 'hbs');
 
 app.use(logger('dev'));
 app.use(express.json());
